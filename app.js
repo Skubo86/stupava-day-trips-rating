@@ -140,6 +140,20 @@ const trips = [
     map: "https://www.google.com/maps/search/?api=1&query=Sandberg%20Dev%C3%ADnska%20Nov%C3%A1%20Ves"
   },
   {
+    id: "hrad-devin",
+    name: "Hrad Devin",
+    category: "Hrady",
+    travel: "25-35 min",
+    total: "3-5 h",
+    difficulty: "easy",
+    weather: "jar az jesen",
+    score: 8,
+    description: "Velky hradny areal, sutok Dunaja a Moravy a dost priestoru na pohyb. Je to klasika, ale pre dieta stale funguje.",
+    note: "Over otvaracie hodiny a vstupne. Cez pekne vikendy byva vela ludi, oplati sa ist skor.",
+    more: "https://hraddevin.mmb.sk/",
+    map: "https://www.google.com/maps/search/?api=1&query=Hrad%20Dev%C3%ADn"
+  },
+  {
     id: "sokoliarna-devin",
     name: "Sokoliarna a minizoo Devin",
     category: "Zvierata",
