@@ -645,6 +645,35 @@ const trips = [
   }
 ];
 
+const pokemonIds = [
+  133, 147, 95, 113, 54, 39, 142, 58, 17, 27, 6, 25, 83, 143, 1, 63, 125, 79, 43, 137, 35, 7, 90,
+  129, 131, 120, 37, 74, 77, 4, 56, 66, 12, 16, 52, 96, 152, 194, 155, 158, 179, 172, 175, 198, 200, 245
+];
+
+const categoryTypes = {
+  Akcia: "fire",
+  Blizko: "normal",
+  Dazd: "electric",
+  Hrady: "rock",
+  Mesto: "steel",
+  Priroda: "grass",
+  "Rakúsko": "psychic",
+  Turistika: "grass",
+  Voda: "water",
+  Vyhlad: "flying",
+  Zazitok: "fairy",
+  Zvierata: "normal",
+  "Česko": "fairy"
+};
+
+trips.forEach((trip, index) => {
+  trip.pokemonId = pokemonIds[index % pokemonIds.length];
+});
+
+function pokemonSpriteUrl(id) {
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+}
+
 
 const state = {
   ratings: {},
@@ -729,6 +758,14 @@ function renderTrips() {
 
   list.forEach((trip) => {
     const node = template.content.firstElementChild.cloneNode(true);
+    node.dataset.type = categoryTypes[trip.category] || "normal";
+    const pokemonImg = node.querySelector(".pokemon-img");
+    pokemonImg.src = pokemonSpriteUrl(trip.pokemonId);
+    pokemonImg.alt = `Malý Pokémon maskot pre výlet ${trip.name}`;
+    pokemonImg.addEventListener("error", () => {
+      node.querySelector(".pokemon-avatar").classList.add("hidden");
+    });
+
     node.querySelector(".category").textContent = trip.category;
     node.querySelector("h3").textContent = trip.name;
     node.querySelector(".score-pill").textContent = `Tip ${trip.score}/10`;

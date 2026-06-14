@@ -1,15 +1,16 @@
 :root {
   color-scheme: light;
-  --bg: #f6f3ec;
-  --surface: #ffffff;
-  --surface-2: #eef5f1;
-  --text: #17211f;
-  --muted: #66736f;
-  --line: #d9ded8;
-  --primary: #245c4f;
-  --primary-2: #d7ebe4;
-  --accent: #b94b31;
-  --shadow: 0 8px 30px rgba(30, 45, 40, 0.08);
+  --bg: #f4f7ff;
+  --surface: #fffdf7;
+  --surface-2: #edf3ff;
+  --text: #182033;
+  --muted: #5f6878;
+  --line: #d8e1f2;
+  --primary: #2d4f9f;
+  --primary-2: #dce8ff;
+  --accent: #e0b21a;
+  --type: var(--primary);
+  --shadow: 0 8px 30px rgba(27, 45, 85, 0.1);
 }
 
 * {
@@ -18,16 +19,19 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background:
+    linear-gradient(180deg, #eef4ff 0, var(--bg) 280px),
+    var(--bg);
   color: var(--text);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.45;
 }
 
 .app-header {
-  background: #245c4f;
+  background: #2d4f9f;
   color: white;
   padding: 28px 18px 24px;
+  border-bottom: 5px solid var(--accent);
 }
 
 .app-header > div,
@@ -38,7 +42,7 @@ main {
 
 .eyebrow {
   margin: 0 0 8px;
-  color: #cfe9df;
+  color: #ffe58a;
   font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -77,12 +81,12 @@ h3 {
 
 .intro {
   margin-bottom: 0;
-  color: #eff8f4;
+  color: #f7fbff;
 }
 
 .score-explain {
   margin: 12px 0 0;
-  color: #cfe9df;
+  color: #dbe8ff;
   font-size: 0.95rem;
 }
 
@@ -239,18 +243,76 @@ textarea {
 
 .trip-card {
   padding: 14px;
+  border-top: 5px solid var(--type);
+}
+
+.trip-card[data-type="electric"] {
+  --type: #f2c94c;
+}
+
+.trip-card[data-type="fairy"] {
+  --type: #ef8fc4;
+}
+
+.trip-card[data-type="fire"] {
+  --type: #f97316;
+}
+
+.trip-card[data-type="flying"] {
+  --type: #74a8e8;
+}
+
+.trip-card[data-type="grass"] {
+  --type: #45a563;
+}
+
+.trip-card[data-type="normal"] {
+  --type: #9aa2b0;
+}
+
+.trip-card[data-type="psychic"] {
+  --type: #b26adf;
+}
+
+.trip-card[data-type="rock"] {
+  --type: #9a7650;
+}
+
+.trip-card[data-type="steel"] {
+  --type: #6b8596;
+}
+
+.trip-card[data-type="water"] {
+  --type: #3487d8;
 }
 
 .card-top {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 68px minmax(0, 1fr) auto;
   gap: 10px;
   align-items: start;
 }
 
+.pokemon-avatar {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--type);
+  border-radius: 8px;
+  background: #fff7d8;
+  box-shadow: inset 0 0 0 3px #ffffff;
+}
+
+.pokemon-img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
 .category {
   margin-bottom: 5px;
-  color: var(--primary);
+  color: var(--type);
   font-size: 0.82rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -261,8 +323,9 @@ textarea {
   min-width: 46px;
   padding: 6px 8px;
   border-radius: 999px;
-  background: var(--primary-2);
-  color: var(--primary);
+  background: #fff2b8;
+  color: #6d5300;
+  border: 1px solid #ead072;
   font-weight: 850;
   text-align: center;
 }
@@ -287,7 +350,7 @@ textarea {
   padding: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fbfaf7;
+  background: #fbfcff;
 }
 
 dt {
@@ -339,10 +402,31 @@ dd {
   min-height: 40px;
   border-radius: 8px;
   padding: 0 12px;
-  background: #f0f1ed;
+  background: #edf3ff;
   color: var(--text);
   font-weight: 800;
   text-decoration: none;
+}
+
+@media (max-width: 430px) {
+  .card-top {
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
+
+  .score-pill {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .pokemon-avatar {
+    width: 54px;
+    height: 54px;
+  }
+
+  .pokemon-img {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .hidden {

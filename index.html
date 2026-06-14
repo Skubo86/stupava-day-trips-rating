@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#245c4f" />
+    <meta name="theme-color" content="#2d4f9f" />
     <title>Vylety zo Stupavy - hodnotenie</title>
-    <link rel="stylesheet" href="styles.css?v=20260614-desc2" />
+    <link rel="stylesheet" href="styles.css?v=20260614-pokemon1" />
   </head>
   <body>
     <header class="app-header">
       <div>
         <p class="eyebrow">Jednodenne vylety zo Stupavy</p>
-        <h1>Vyberme, kam pojdeme</h1>
+        <h1>Vyberme, kam pojdeme?</h1>
         <p class="intro">
-          Oznámkuj každý výlet ako v škole: <strong>1 je najlepšie</strong>,
+          Vyber výlet pre náš malý dobrodružný tím. Oznámkuj každý výlet ako v škole: <strong>1 je najlepšie</strong>,
           <strong>5 je najhoršie</strong>. Čo nechceš hodnotiť, nechaj prázdne.
         </p>
         <p class="score-explain">
@@ -85,6 +85,9 @@
     <template id="tripTemplate">
       <article class="trip-card">
         <div class="card-top">
+          <div class="pokemon-avatar">
+            <img class="pokemon-img" alt="" loading="lazy" />
+          </div>
           <div>
             <p class="category"></p>
             <h3></h3>
@@ -127,6 +130,6 @@
       </article>
     </template>
 
-    <script src="app.js?v=20260614-desc2"></script>
+    <script src="app.js?v=20260614-pokemon1"></script>
   </body>
 </html>
