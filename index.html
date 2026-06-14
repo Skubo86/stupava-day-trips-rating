@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="sk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#245c4f" />
+    <title>Vylety zo Stupavy - hodnotenie</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Jednodenne vylety zo Stupavy</p>
+        <h1>Vyberme, kam pojdeme</h1>
+        <p class="intro">
+          Oznámkuj každý výlet ako v škole: <strong>1 je najlepšie</strong>,
+          <strong>5 je najhoršie</strong>. Čo nechceš hodnotiť, nechaj prázdne.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="toolbar" aria-label="Filtre a akcie">
+        <label class="search">
+          <span>Hľadať</span>
+          <input id="searchInput" type="search" placeholder="hrad, voda, zoo..." autocomplete="off" />
+        </label>
+
+        <div class="filters" id="categoryFilters" aria-label="Kategórie"></div>
+
+        <div class="actions">
+          <button id="showUnrated" type="button">Len neoznámkované</button>
+          <button id="clearFilters" type="button">Zrušiť filtre</button>
+        </div>
+      </section>
+
+      <section class="summary" aria-label="Súhrn hodnotenia">
+        <div>
+          <span class="summary-label">Oznámkované</span>
+          <strong id="ratedCount">0 / 0</strong>
+        </div>
+        <div>
+          <span class="summary-label">Najlepšie zatiaľ</span>
+          <strong id="bestPick">-</strong>
+        </div>
+        <div>
+          <span class="summary-label">Priemer</span>
+          <strong id="averageGrade">-</strong>
+        </div>
+      </section>
+
+      <section class="share-panel" aria-label="Zdieľanie výsledkov">
+        <h2>Keď bude hotovo</h2>
+        <p>
+          Známky sa ukladajú iba v tomto zariadení. Tlačidlo nižšie vytvorí link,
+          v ktorom sú známky uložené v adrese. Pošli ho otcovi.
+        </p>
+        <div class="share-actions">
+          <button id="shareLink" type="button">Zdieľať výsledkový link</button>
+          <button id="copySummary" type="button">Kopírovať súhrn</button>
+          <button id="exportCsv" type="button">Export CSV</button>
+          <button id="resetRatings" class="danger" type="button">Vymazať známky</button>
+        </div>
+        <textarea id="resultBox" readonly rows="4" aria-label="Výsledky na kopírovanie"></textarea>
+      </section>
+
+      <section class="ranking" aria-label="Rebríček">
+        <h2>Rebríček podľa známok</h2>
+        <ol id="rankingList"></ol>
+      </section>
+
+      <section>
+        <div class="list-header">
+          <h2>Možnosti výletov</h2>
+          <p id="visibleCount"></p>
+        </div>
+        <div id="tripList" class="trip-list"></div>
+      </section>
+    </main>
+
+    <template id="tripTemplate">
+      <article class="trip-card">
+        <div class="card-top">
+          <div>
+            <p class="category"></p>
+            <h3></h3>
+          </div>
+          <div class="score-pill"></div>
+        </div>
+
+        <p class="description"></p>
+
+        <dl class="facts">
+          <div>
+            <dt>Cesta zo Stupavy</dt>
+            <dd class="travel"></dd>
+          </div>
+          <div>
+            <dt>Celý výlet od domu po návrat</dt>
+            <dd class="total"></dd>
+          </div>
+          <div>
+            <dt>Náročnosť</dt>
+            <dd class="difficulty"></dd>
+          </div>
+          <div>
+            <dt>Najlepšie počasie</dt>
+            <dd class="weather"></dd>
+          </div>
+        </dl>
+
+        <p class="note"></p>
+
+        <div class="rating" aria-label="Hodnotenie výletu">
+          <span>Moja známka</span>
+          <div class="grade-buttons"></div>
+        </div>
+
+        <div class="links">
+          <a class="more-link" target="_blank" rel="noopener">Viac info</a>
+          <a class="map-link" target="_blank" rel="noopener">Mapa</a>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
