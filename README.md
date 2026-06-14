@@ -2,6 +2,10 @@
 
 Mobilna staticka web verzia zoznamu jednodennych vyletov zo Stupavy.
 
+Online verzia:
+
+`https://skubo86.github.io/stupava-day-trips-rating/`
+
 Funkcie:
 
 - hodnotenie kazdej moznosti znamkou 1 az 5, kde 1 je najlepsia;
