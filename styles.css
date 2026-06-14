@@ -70,10 +70,20 @@ h3 {
   line-height: 1.18;
 }
 
-.intro {
+.intro,
+.score-explain {
   max-width: 760px;
+}
+
+.intro {
   margin-bottom: 0;
   color: #eff8f4;
+}
+
+.score-explain {
+  margin: 12px 0 0;
+  color: #cfe9df;
+  font-size: 0.95rem;
 }
 
 main {

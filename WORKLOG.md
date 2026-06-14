@@ -9,3 +9,5 @@
 - Projekt publikovany cez GitHub Pages:
   `https://skubo86.github.io/stupava-day-trips-rating/`
 - Na poziadanie pridany Hrad Devin spat do hodnotiacej aplikacie; zoznam ma teraz 46 aktivit.
+- Rozsirene popisy v hodnotiacej aplikacii na minimalne 5 viet pre kazdu aktivitu.
+- Doplnene vysvetlenie, ze skore 1-10 je orientacne rodicovske odporucanie, nie znamka dietata.
