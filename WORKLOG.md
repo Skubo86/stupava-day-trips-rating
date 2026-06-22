@@ -12,3 +12,9 @@
 - Rozsirene popisy v hodnotiacej aplikacii na minimalne 5 viet pre kazdu aktivitu.
 - Doplnene vysvetlenie, ze skore 1-10 je orientacne rodicovske odporucanie, nie znamka dietata.
 - Pridana jemna Pokemon tema: male sprite obrazky v kartach, farebne typy podla kategorie a cache-busting verzia `20260614-pokemon1`.
+
+## 2026-06-22
+
+- Nahradena Pokemon tema lokalne generovanymi hackovanymi/amigurumi zvieratkami v kartach.
+- Odstranena zavislost na PokeAPI sprite obrazkoch a nastavena cache-busting verzia `20260622-crochet1`.
+- Pridany reset link parameter `?reset=1`, ktory vymaze lokalne ulozene znamky v prehliadaci a otvori prazdny formular.

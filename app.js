@@ -645,9 +645,19 @@ const trips = [
   }
 ];
 
-const pokemonIds = [
-  133, 147, 95, 113, 54, 39, 142, 58, 17, 27, 6, 25, 83, 143, 1, 63, 125, 79, 43, 137, 35, 7, 90,
-  129, 131, 120, 37, 74, 77, 4, 56, 66, 12, 16, 52, 96, 152, 194, 155, 158, 179, 172, 175, 198, 200, 245
+const crochetAnimals = [
+  { name: "macka", color: "#f6c58f", accent: "#d99558", ears: "cat" },
+  { name: "zajac", color: "#f7e1d2", accent: "#dca7a2", ears: "bunny" },
+  { name: "medvedik", color: "#c99a68", accent: "#986e45", ears: "round" },
+  { name: "liska", color: "#ee8f4d", accent: "#c6642f", ears: "fox" },
+  { name: "psik", color: "#d9b48f", accent: "#8c6547", ears: "dog" },
+  { name: "ovecka", color: "#f4eee0", accent: "#cfc3a7", ears: "round" },
+  { name: "koala", color: "#bfc6c8", accent: "#879194", ears: "round" },
+  { name: "prasiatko", color: "#f4b6c2", accent: "#d77f92", ears: "cat" },
+  { name: "myska", color: "#d8d2c9", accent: "#a7a097", ears: "round" },
+  { name: "jelen", color: "#c58d5a", accent: "#815631", ears: "deer" },
+  { name: "zabka", color: "#9fd37c", accent: "#62a345", ears: "frog" },
+  { name: "tucniak", color: "#4b6175", accent: "#f2f2ea", ears: "round" }
 ];
 
 const categoryTypes = {
@@ -667,11 +677,36 @@ const categoryTypes = {
 };
 
 trips.forEach((trip, index) => {
-  trip.pokemonId = pokemonIds[index % pokemonIds.length];
+  trip.crochetAnimal = crochetAnimals[index % crochetAnimals.length];
 });
 
-function pokemonSpriteUrl(id) {
-  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+function crochetAnimalUrl(animal) {
+  const earShapes = {
+    cat: `<path d="M18 24 L24 8 L34 24 Z" fill="${animal.color}" stroke="${animal.accent}" stroke-width="2"/><path d="M46 24 L56 8 L62 24 Z" fill="${animal.color}" stroke="${animal.accent}" stroke-width="2"/>`,
+    bunny: `<ellipse cx="26" cy="13" rx="7" ry="17" fill="${animal.color}" stroke="${animal.accent}" stroke-width="2"/><ellipse cx="54" cy="13" rx="7" ry="17" fill="${animal.color}" stroke="${animal.accent}" stroke-width="2"/><ellipse cx="26" cy="14" rx="3" ry="11" fill="#f5b8bf"/><ellipse cx="54" cy="14" rx="3" ry="11" fill="#f5b8bf"/>`,
+    round: `<circle cx="24" cy="24" r="10" fill="${animal.color}" stroke="${animal.accent}" stroke-width="2"/><circle cx="56" cy="24" r="10" fill="${animal.color}" stroke="${animal.accent}" stroke-width="2"/>`,
+    fox: `<path d="M17 25 L25 6 L36 25 Z" fill="${animal.color}" stroke="${animal.accent}" stroke-width="2"/><path d="M44 25 L55 6 L63 25 Z" fill="${animal.color}" stroke="${animal.accent}" stroke-width="2"/>`,
+    dog: `<ellipse cx="20" cy="28" rx="8" ry="14" fill="${animal.accent}" transform="rotate(25 20 28)"/><ellipse cx="60" cy="28" rx="8" ry="14" fill="${animal.accent}" transform="rotate(-25 60 28)"/>`,
+    deer: `<path d="M21 22 C15 14 16 9 21 7 M23 20 C21 12 25 8 30 7 M59 22 C65 14 64 9 59 7 M57 20 C59 12 55 8 50 7" fill="none" stroke="${animal.accent}" stroke-width="3" stroke-linecap="round"/><ellipse cx="24" cy="25" rx="8" ry="10" fill="${animal.color}" stroke="${animal.accent}" stroke-width="2"/><ellipse cx="56" cy="25" rx="8" ry="10" fill="${animal.color}" stroke="${animal.accent}" stroke-width="2"/>`,
+    frog: `<circle cx="25" cy="22" r="9" fill="${animal.color}" stroke="${animal.accent}" stroke-width="2"/><circle cx="55" cy="22" r="9" fill="${animal.color}" stroke="${animal.accent}" stroke-width="2"/>`
+  };
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+      <rect width="80" height="80" rx="16" fill="#fff7e8"/>
+      ${earShapes[animal.ears] || earShapes.round}
+      <circle cx="40" cy="40" r="27" fill="${animal.color}" stroke="${animal.accent}" stroke-width="2.5"/>
+      <path d="M18 35 C30 28 50 28 62 35 M17 43 C30 36 50 36 63 43 M20 51 C31 45 49 45 60 51" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.55" stroke-linecap="round"/>
+      <path d="M22 33 C32 25 48 25 58 33 M21 58 C31 66 49 66 59 58" fill="none" stroke="${animal.accent}" stroke-width="1.4" opacity="0.45" stroke-linecap="round"/>
+      <circle cx="31" cy="39" r="3.2" fill="#2b2624"/>
+      <circle cx="49" cy="39" r="3.2" fill="#2b2624"/>
+      <ellipse cx="40" cy="48" rx="8" ry="6" fill="#fff1df" opacity="0.9"/>
+      <path d="M37 46 Q40 49 43 46" fill="none" stroke="#2b2624" stroke-width="2" stroke-linecap="round"/>
+      <path d="M40 49 Q36 53 32 51 M40 49 Q44 53 48 51" fill="none" stroke="#2b2624" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="25" cy="46" r="3" fill="#f6a9aa" opacity="0.55"/>
+      <circle cx="55" cy="46" r="3" fill="#f6a9aa" opacity="0.55"/>
+      <path d="M17 61 C24 70 56 70 63 61" fill="none" stroke="#d8b28a" stroke-width="2" stroke-dasharray="2 3" opacity="0.75"/>
+    </svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
 
@@ -697,7 +732,14 @@ const visibleCount = document.querySelector("#visibleCount");
 const resultBox = document.querySelector("#resultBox");
 
 function loadRatings() {
-  const fromUrl = new URLSearchParams(window.location.search).get("r");
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("reset") === "1") {
+    state.ratings = {};
+    localStorage.removeItem(storageKey);
+    return;
+  }
+
+  const fromUrl = params.get("r");
   if (fromUrl) {
     try {
       const parsed = JSON.parse(decodeURIComponent(atob(fromUrl)));
@@ -759,11 +801,11 @@ function renderTrips() {
   list.forEach((trip) => {
     const node = template.content.firstElementChild.cloneNode(true);
     node.dataset.type = categoryTypes[trip.category] || "normal";
-    const pokemonImg = node.querySelector(".pokemon-img");
-    pokemonImg.src = pokemonSpriteUrl(trip.pokemonId);
-    pokemonImg.alt = `Malý Pokémon maskot pre výlet ${trip.name}`;
-    pokemonImg.addEventListener("error", () => {
-      node.querySelector(".pokemon-avatar").classList.add("hidden");
+    const crochetImg = node.querySelector(".crochet-img");
+    crochetImg.src = crochetAnimalUrl(trip.crochetAnimal);
+    crochetImg.alt = `Háčkované zvieratko ${trip.crochetAnimal.name} pre výlet ${trip.name}`;
+    crochetImg.addEventListener("error", () => {
+      node.querySelector(".crochet-avatar").classList.add("hidden");
     });
 
     node.querySelector(".category").textContent = trip.category;
