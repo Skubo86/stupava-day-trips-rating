@@ -1,5 +1,10 @@
 # Worklog
 
+## 2026-06-28
+
+- Doplnene standardne projektove priecinky `notes`, `assets` a `outputs` s
+  `.gitkeep`, aby projekt splnal aktualne pravidla `F:\Codex` workspace.
+
 ## 2026-06-14
 
 - Vytvorena staticka mobilna web aplikacia pre hodnotenie vyletov zo Stupavy.
